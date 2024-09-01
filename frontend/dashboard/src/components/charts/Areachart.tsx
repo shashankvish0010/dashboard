@@ -8,7 +8,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "../ui/card";
 import {
   ChartConfig,
@@ -19,23 +18,25 @@ import {
 
 export const description = "A simple area chart";
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
-
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Tasks",
     color: "orange",
   },
 } satisfies ChartConfig;
 
-export const Areachart = () => {
+interface AreaChartType {
+  chartData: [
+    {
+      month: string;
+      tasks: number;
+    }
+  ];
+}
+
+export const Areachart = ({ chartData }: AreaChartType) => {
+  console.log("area", chartData);
+
   return (
     <Card>
       <CardHeader>
@@ -65,7 +66,7 @@ export const Areachart = () => {
               content={<ChartTooltipContent indicator="line" />}
             />
             <Area
-              dataKey="desktop"
+              dataKey="tasks"
               type="natural"
               fill="var(--color-desktop)"
               fillOpacity={0.4}
@@ -77,11 +78,8 @@ export const Areachart = () => {
       <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month
-            </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              January - June 2024
+              {chartData[0].month} - {chartData[chartData.length - 1].month}
             </div>
           </div>
         </div>

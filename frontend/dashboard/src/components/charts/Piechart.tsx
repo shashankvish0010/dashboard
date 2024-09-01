@@ -12,46 +12,70 @@ import {
 } from "../ui/chart";
 
 export const description = "A donut chart with text";
-
-const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
-];
-
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  pendingTasks: {
+    label: "Pending Tasks",
   },
-  chrome: {
-    label: "Chrome",
+  litigation: {
+    label: "Litigation",
     color: "hsl(var(--chart-1))",
   },
-  safari: {
-    label: "Safari",
+  corporate: {
+    label: "Corporate",
     color: "hsl(var(--chart-2))",
   },
-  firefox: {
-    label: "Firefox",
+  familyLaw: {
+    label: "Family Law",
     color: "hsl(var(--chart-3))",
   },
-  edge: {
-    label: "Edge",
+  criminal: {
+    label: "Criminal",
     color: "hsl(var(--chart-4))",
   },
-  other: {
-    label: "Other",
+  realEstate: {
+    label: "Real Estate",
     color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig;
+
+// const chartConfig = {
+//   tasks: {
+//     label: "tasks",
+//   },
+//   chrome: {
+//     label: "Chrome",
+//     color: "hsl(var(--chart-1))",
+//   },
+//   safari: {
+//     label: "Safari",
+//     color: "hsl(var(--chart-2))",
+//   },
+//   firefox: {
+//     label: "Firefox",
+//     color: "hsl(var(--chart-3))",
+//   },
+//   edge: {
+//     label: "Edge",
+//     color: "hsl(var(--chart-4))",
+//   },
+//   other: {
+//     label: "Other",
+//     color: "hsl(var(--chart-5))",
+//   },
+// } satisfies ChartConfig;
 interface PieType {
   title: string;
+  primary: string;
+  chartData: [
+    {
+      month: string;
+      tasks: number;
+    }
+  ];
 }
-export const Piechart: React.FC<PieType> = ({ title }) => {
+export const Piechart: React.FC<PieType> = ({ title, primary, chartData }) => {
   const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
+    return chartData.reduce((acc, curr) => acc + curr.tasks, 0);
   }, []);
 
   return (
@@ -68,8 +92,8 @@ export const Piechart: React.FC<PieType> = ({ title }) => {
             />
             <Pie
               data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
+              dataKey="tasks"
+              nameKey="category"
               innerRadius={60}
               strokeWidth={5}
             >
@@ -86,7 +110,7 @@ export const Piechart: React.FC<PieType> = ({ title }) => {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-white text-3xl font-bold"
+                          className={`${primary} text-3xl font-bold`}
                         >
                           {totalVisitors.toLocaleString()}
                         </tspan>

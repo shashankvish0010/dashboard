@@ -90,6 +90,10 @@
   font-style: normal;
 }
 
+.title {
+  font-family: "Poppins", sans-serif;
+}
+
 @layer base {
   * {
     @apply border-border;

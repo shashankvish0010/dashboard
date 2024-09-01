@@ -1,27 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Progressbar from "./Progressbar";
+import { DataContext } from "@/context/Datacontext";
 
 const TaskProgress: React.FC = () => {
+  const dataContext = useContext(DataContext);
   return (
-    <div className="bg-slate-800 h-max md:w-[35vw] w-[80vw] flex flex-row items-center justify-evenly p-2 text-white rounded-2xl">
-      <Progressbar
-        title="Time Interno"
-        value={30}
-        primary={"bg-slate-700"}
-        secondary={"bg-white"}
-      />
-      <Progressbar
-        title="Mopheos"
-        value={30}
-        primary={"bg-orange-400"}
-        secondary={"bg-white"}
-      />
-      <Progressbar
-        title="Appontes"
-        value={40}
-        primary={"bg-slate-600"}
-        secondary={"bg-white"}
-      />
+    <div className="bg-slate-800 h-max md:w-[35vw] w-[90vw] flex flex-row items-center justify-evenly p-2 text-white rounded-2xl">
+      {dataContext?.progressData
+        ? dataContext.progressData.map((data) => (
+            <Progressbar
+              title={data.title}
+              value={data.value}
+              primary={data.primary}
+              secondary={data.secondary}
+            />
+          ))
+        : null}
     </div>
   );
 };
