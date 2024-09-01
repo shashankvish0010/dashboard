@@ -19,4 +19,4 @@ Completed the assignment project Dashboard.
 
 ## Context;
 
-- I used Typescript in React as more complex components are to be integarted which can generate severe problems in future if the same project scales with large number of components. and Javascript for the Node backend because there was just no complexity with he backend for the task assigned to me.
+- I used Typescript for typesafety in React as more complex components are to be integrated which can generate major problems in future, if the same project scales with large number of components. and Javascript for the Node backend because there was no complexity with the backend as per the current requirements for the task assigned to me.
