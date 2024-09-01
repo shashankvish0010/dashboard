@@ -67,10 +67,10 @@ const Header: React.FC = () => {
             <Icon icon="oui:cross" height={"2rem"} color="black" />
           </div>
           <ul className="h-[25vh] text-white uppercase header_list md:hidden flex flex-col justify-around text-sm">
-            <li className="cursor-pointer">Home</li>
-            <li className="cursor-pointer">About</li>
-            <li className="cursor-pointer">Contact</li>
-            <li className="cursor-pointer">Reports</li>
+            <li onClick={() => navigate("/")} className="cursor-pointer">Home</li>
+            <li onClick={() => navigate("/about")} className="cursor-pointer">About</li>
+            <li onClick={() => navigate("/contact")} className="cursor-pointer">Contact</li>
+            <li onClick={() => navigate("/")} className="cursor-pointer">Reports</li>
           </ul>
         </div>
       ) : null}
