@@ -3,7 +3,7 @@ Completed the assignment project Dashboard.
 ## Frontend:
 
 - Reactjs, Typescript, Tailwind CSS, ShadCN/Ui, React Context for state management.
-- be at you root directory then,
+- be at your root directory then,
 - cd frontend
 - cd dashboard
 - npm install, To install all the necessary packages and dependencies.
@@ -12,7 +12,7 @@ Completed the assignment project Dashboard.
 ## Backend:
 
 - Node JS, Javascript, Express JS.
-- Split your terminals and be at you root directory then,
+- Split your terminals and be at your root directory then,
 - cd backend
 - npm install, To install all the necessary packages and dependencies.
 - npm run dev, will start Node server at http://localhost:8000
